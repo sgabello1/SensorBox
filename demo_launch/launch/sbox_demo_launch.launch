@@ -1,0 +1,14 @@
+<launch>
+
+ <include file="$(find husky_viz)/launch/view_robot.launch" args="-d /home/robot/Desktop/sbox.rviz"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find husky_navigation)/launch/amcl_demo.launch" />
+
+ <!--- Run Velodyne -->
+  <include file="$(find velodyne_pointcloud)/launch/VLP16_points.launch" /> 
+
+ <!--- Transform 3D Velodyne in 2D laser scan-->
+  <include file="$(find pointcloud_to_laserscan)/launch/sample_node.launch" /> 
+
+</launch>
