@@ -13,7 +13,7 @@ SesorBox is composed of:
 
 In this post we will focus on the traditional 2D navigation and we will hack Velodyne in order to make it working as it was a traditional 2D laser scanner (e.g RPLidar A3, Hokuyo etc).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JbJeOqDqstU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/JbJeOqDqstU/0.jpg)](https://www.youtube.com/watch?v=JbJeOqDqstU)
 
 # STEPS
 Assuming we have ROS up and running, first we need to install all the Husky navigation stack on our embedded computer. While installing the ROS packages is quite straightforward
