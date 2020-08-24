@@ -14,7 +14,7 @@ When you start the robot make sure:
 
 
 
-''' sudo service husky_core stop '''
+``` sudo service husky_core stop ```
 
 '' sudo service husky_core start ''
 
