@@ -1,0 +1,43 @@
+<launch>
+  <node pkg="husky_rviz" type="rviz" name="rviz" 
+    args="-d /home/bdi/.rviz/demo_master.rviz"/>
+
+  <!--include file="$(find husky_base)/launch/base.launch"/-->
+  <!--include file="$(find husky_bringup)/launch/um7_config/um7.launch"/-->
+
+  <arg name="server" default="192.168.1.112"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find husky_navigation)/launch/amcl_demo.launch" />
+
+ <!--- Run RPLIDAR -->
+  <include file="$(find rplidar_ros)/launch/rplidar_a3.launch" />
+
+  <!-- pose read and pub -->
+  <node name="readAndPub" pkg="vrpn2gmapping" type="readAndPub" output="screen"/>
+
+  <node pkg="vis_marker" name="husky_err_calc" type="husky_err_calc" output="screen"/>
+  <node pkg="connection" name="husky_sender" type="husky_sender_new.py" output="screen"/>
+
+  <node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" output="screen">
+  <rosparam subst_value="true">
+    server: $(arg server)
+    port: 3883
+    update_frequency: 100.0
+    frame_id: world
+    # Use the VRPN server's time, or the client's ROS time.
+    use_server_time: false
+    broadcast_tf: true
+    # Must either specify refresh frequency > 0.0, or a list of trackers to create
+    refresh_tracker_frequency: 1.0
+    #trackers:
+    #- FirstTracker
+    #- SecondTracker
+  </rosparam>
+  </node>
+
+  <!--include file="$(find ar_pose)/launch/ar_pose_single_zed.launch"/-->
+
+  
+
+</launch>
